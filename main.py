@@ -17,7 +17,7 @@ import requests
 import argparse
 from core import aliyunOss
 
-NowTime = datetime.datetime.now().strftime('%Y-%m-%d_%H_%M_%S')
+NowTime = datetime.datetime.now().strftime('%Y-%m-%d')
 
 logger = logging.getLogger("mainModule")
 log_colors_config = {

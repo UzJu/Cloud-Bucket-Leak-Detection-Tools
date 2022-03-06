@@ -1,21 +1,28 @@
-# Cloud-Bucket-Leak-Detection-Tools
+[TOC]
+# :rooster:0x00 前言
 
 想写个存储桶的利用，先给自己画个饼
 
-**画饼进度**
+工具名称我都没想好，相比大佬们看到项目名就知道...机翻王
+
+如果觉得用的还行，可以提issue给工具起个名字？:sos:
+
+:waning_crescent_moon:**画饼进度**
 
 1、阿里云存储桶利用
 
 不太会用Git，代码写的也烂，有BUG直接提Issue即可（好像我连issue可能都用不明白）
 
-# 0x00 依赖
+> 好在二爷给我推荐的GitHub Desktop 二爷YYDS
+
+# :pill:0x01 依赖
 
 + pip3 install oss2
 + pip3 install colorlog
 + pip3 install logging
 + pip3 argparse
 
-# 0x01 使用方法
+# :gun:0x02 使用方法
 
 ```bash
 git clone https://github.com/UzJu/Cloud-Bucket-Leak-Detection-Tools.git
@@ -38,6 +45,31 @@ python3 main.py -h
 
 ![image-20220304185434168](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220304185434168.png)
 
+## 3、批量检测存储桶
+
+新增批量存储桶的检测功能，推荐fofa一键导出所有资产
+
+**fofa**
+
+```bash
+domain="aliyuncs.com"
+server="AliyunOSS"domain="aliyuncs.com" #不推荐该语法
+```
+
+```bash
+python3 main.py -f filepath
+```
+
+随后等待即可，扫描结果会在results目录下，文件名为当天的日期
+
+![image-20220306211140577](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220306211140577.png)
+
+![image-20220306211025275](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220306211025275.png)
+
+只会保存有权限操作的存储桶
+
+![image-20220306211225341](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220306211225341.png)
+
 输入存储桶地址即可自动检测，功能如下
 
 + 1、检测当前存储桶是否可劫持
@@ -46,8 +78,9 @@ python3 main.py -h
 + 3、检测当前存储桶是否可获取ACL
 + 4、检测当前存储桶是否可获取Policy策略表
 + 5、检测存储桶是否可上传Object
++ 6、批量检测功能
 
-## 一、阿里云存储桶利用
+# 0x03 阿里云存储桶利用
 
 ### 1、实现思路
 
@@ -75,7 +108,21 @@ python3 main.py -h
 
   + 尝试上传一个文件，是否可以成功上传
 
-### 
 
 
+# :older_man:0x040001 更新日志
 
+**2022年3月6日**
+
++ 新增批量扫描功能
++ 修复Fake_UserAgent报错的问题
+
+> 其实是直接把这个库删了，不用了^ ^
+
+# :cop:0xffffffff 免责声明
+
+免责声明
+
+1、本工具只作为学术交流，禁止使用工具做违法的事情
+
+2、只是写着玩

