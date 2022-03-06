@@ -68,13 +68,12 @@ python3 main.py -f filepath
 
 随后等待即可，扫描结果会在results目录下，文件名为当天的日期
 
-![image-20220306211140577](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220306211140577.png)
+![image](https://user-images.githubusercontent.com/50813806/156925744-3c012b86-6449-4cf1-a790-b2c1282f76bd.png)
 
-![image-20220306211025275](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220306211025275.png)
+![image](https://user-images.githubusercontent.com/50813806/156925758-36a8fcba-8bc8-4d1a-8863-d8110dbe0b71.png)
 
 只会保存有权限操作的存储桶
-
-![image-20220306211225341](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220306211225341.png)
+![image](https://user-images.githubusercontent.com/50813806/156925766-15d415d3-d573-4b54-ab0f-5c79bc1966ad.png)
 
 输入存储桶地址即可自动检测，功能如下
 
