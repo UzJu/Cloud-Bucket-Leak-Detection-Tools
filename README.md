@@ -2,7 +2,14 @@
 
 想写个存储桶的利用，先给自己画个饼
 
-工具名称我都没想好，相比大佬们看到项目名就知道...机翻王
++ 阿里云（Aliyun Cloud Oss）
++ 腾讯云（Tencent Cloud COS）
++ 华为云 （HuaWei Cloud OBS）
++ AWS （Amazon S3 Bucket）
++ Azure （Azure Blob）
++ GCP （Google Cloud Bucket)
+
+工具名称我都没想好，相信大佬们看到项目名就知道...机翻王
 
 如果觉得用的还行，可以提issue给工具起个名字？:sos:
 
