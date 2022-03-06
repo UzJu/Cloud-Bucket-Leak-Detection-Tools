@@ -113,7 +113,7 @@ class OssBucketCheckFromSDK:
         self.target = target
         self.location = location
         self.logger = logging.getLogger("mainModule.AliyunOss.module")
-        auth = oss2.Auth(conf.AK, conf.SECRET)
+        auth = oss2.Auth(conf.AliyunAccessKey_ID, conf.AliyunAccessKey_Secret)
         self.bucket = oss2.Bucket(auth, f'http://{location}.aliyuncs.com', self.target)
         self.Exploit = OssBucketExploitFromSDK(self.target, location)
         # 设置csvHeaders头
