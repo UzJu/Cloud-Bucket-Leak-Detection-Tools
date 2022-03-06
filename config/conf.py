@@ -19,5 +19,5 @@
 现在实现的方式是直接调SDK所以不需要这个Fake_useragent了
 """
 
-AK = ""
-SECRET = ""
+AliyunAccessKey_ID = ""
+AliyunAccessKey_Secret = ""
