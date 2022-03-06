@@ -49,7 +49,7 @@ python3 main.py -h
 
 ## 2、当存储桶不存在时(自动创建并劫持)
 
-![image-20220304185434168](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220304185434168.png)
+![image](https://user-images.githubusercontent.com/50813806/156925718-9a3dc236-0ef6-4afa-8d26-a2946fe876b2.png)
 
 ## 3、批量检测存储桶
 
