@@ -43,7 +43,7 @@ class OssBucketExploitFromSDK:
     def __init__(self, target, location):
         self.target = target
         self.location = location
-        auth = oss2.Auth(conf.AK, conf.SECRET)
+        auth = oss2.Auth(conf.AliyunAccessKey_ID, conf.AliyunAccessKey_Secret)
         self.bucket = oss2.Bucket(auth, f'http://{location}.aliyuncs.com', self.target)
         self.logger = logging.getLogger("mainModule.AliyunOss.Exploit.module")
 
