@@ -19,7 +19,7 @@
 + pip3 install oss2
 + pip3 install colorlog
 + pip3 install logging
-+ pip3 argparse
++ pip3 install argparse
 
 # :gun:0x02 使用方法
 
