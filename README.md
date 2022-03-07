@@ -1,5 +1,9 @@
 # :rooster:0x00 前言
 
+**语言/Language**
+
+English README: [English](README.en)
+
 想写个存储桶的利用，先给自己画个饼
 
 + 阿里云（Aliyun Cloud Oss）
