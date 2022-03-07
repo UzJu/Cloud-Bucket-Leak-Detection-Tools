@@ -150,3 +150,9 @@ python3 main.py -f filepath
 1、本工具只作为学术交流，禁止使用工具做违法的事情
 
 2、只是写着玩
+
+3、我的微信
+
+> 如果你有更好的建议或者交个朋友
+
+![image-20220307235828808](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220307235828808.png)
