@@ -1,5 +1,9 @@
 # :rooster:0x00 前言
 
+> 2022年3月7日
+>
+> 我觉得文档写的还不是很清楚，等有空更新一下文档完整的使用教程
+
 **语言/Language**
 
 English README: [English](README.en.md)
@@ -29,7 +33,6 @@ English README: [English](README.en.md)
 
 + pip3 install oss2
 + pip3 install colorlog
-+ pip3 install logging
 + pip3 install argparse
 
 # :gun:0x02 使用方法
@@ -89,6 +92,14 @@ python3 main.py -f filepath
 + 5、检测存储桶是否可上传Object
 + 6、批量检测功能
 
+## 4、域名检测功能
+
+很多存储桶都解析了域名，新增判断域名的CNAME，然后取CNAME来进行检测
+
+**现在可以直接导入大量域名资产来进行检测，会自动判断域名的CNAME**
+
+![image-20220307231827585](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220307231827585.png)
+
 # 0x03 阿里云存储桶利用
 
 ### 1、实现思路
@@ -127,6 +138,10 @@ python3 main.py -f filepath
 + 修复Fake_UserAgent报错的问题
 
 > 其实是直接把这个库删了，不用了^ ^
+
+**2022年3月7日**
+
++ 新增域名检测
 
 # :cop:0xffffffff 免责声明
 

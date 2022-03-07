@@ -16,6 +16,7 @@ from config import BannerInfo
 import requests
 import argparse
 from core import aliyunOss
+from core import DnsResolution
 
 NowTime = datetime.datetime.now().strftime('%Y-%m-%d')
 
@@ -87,14 +88,22 @@ if __name__ == '__main__':
         parser.add_argument('-aliyun', dest='aliyun', help='python3 -aliyun UzJu.oss-cn-beijing.aliyuncs.com')
         parser.add_argument('-f', '--file', dest='file', help='python3 -f/--file url.txt')
         args = parser.parse_args()
+
         if args.aliyun:
-            getTargetBucket = args.aliyun.split(".")
-            aliyunOss.CheckBucket(getTargetBucket[0], getTargetBucket[1])
+            existDomain = DnsResolution.GetDomainDnsResolution(args.aliyun)
+            if existDomain:
+                aliyunOss.CheckBucket(existDomain.split(".")[0], existDomain.split(".")[1])
+            else:
+                getTargetBucket = args.aliyun.split(".")
+                aliyunOss.CheckBucket(getTargetBucket[0], getTargetBucket[1])
         if args.file:
             with open(args.file, 'r') as f:
                 for i in f.read().splitlines():
-                    getTargetBucket = i.split(".")
-                    aliyunOss.CheckBucket(getTargetBucket[0], getTargetBucket[1])
-
+                    existDomain = DnsResolution.GetDomainDnsResolution(i)
+                    if existDomain:
+                        aliyunOss.CheckBucket(existDomain.split(".")[0], existDomain.split(".")[1])
+                    else:
+                        getTargetBucket = i.split(".")
+                        aliyunOss.CheckBucket(getTargetBucket[0], getTargetBucket[1])
     except KeyboardInterrupt:
         logger.error("KeyError Out")

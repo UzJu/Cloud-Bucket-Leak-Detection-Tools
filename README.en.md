@@ -79,6 +79,13 @@ Enter the storage bucket address to automatically detect, the function is as fol
 + 5、Detect whether the bucket can upload Objects
 + 6、Batch detection function
 
+## 4, domain name detection function
+
+Many storage buckets have resolved the domain name, the new judgment of the CNAME of the domain name, and then take the CNAME to detect
+
+**can now directly import a large number of domain name assets for detection, will automatically determine the CNAME of the domain name **
+
+![image-20220307231827585](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220307231827585.png)
 # 0x03 Ali cloud storage bucket utilization
 
 ### 1、Implementation idea
@@ -116,6 +123,9 @@ First implement the `OssBucketCheckFromSDK` class
 
 > actually just delete this library, don't use it ^ ^
 
+**March 7, 2022**
+
++ New Domain Name Detection
 # :cop:0xffffffff Disclaimer
 
 Disclaimers
