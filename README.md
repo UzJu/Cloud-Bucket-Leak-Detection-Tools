@@ -155,4 +155,5 @@ python3 main.py -f filepath
 
 > 如果你有更好的建议或者交个朋友
 
-![image-20220307235828808](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImageimage-20220307235828808.png)
+![image](https://user-images.githubusercontent.com/50813806/157070417-dbb7886f-1bb8-412f-a30b-0f85bc8ffa10.png)
+
