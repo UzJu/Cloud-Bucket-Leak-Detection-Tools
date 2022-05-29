@@ -18,28 +18,11 @@ import json
 from config import conf
 import logging
 import os
-import csv
 import datetime
+
 
 module_logger = logging.getLogger("mainModule.AliyunOss")
 NowTime = datetime.datetime.now().strftime('%Y-%m-%d')
-
-
-def results(target, info):
-    headers = ['存储桶地址', '权限']
-    filepath = f'{os.getcwd()}/results/{NowTime}.csv'
-    rows = [
-        [f"{target}", info]
-    ]
-    if not os.path.isfile(filepath):
-        with open(filepath, 'a+', newline='') as f:
-            f = csv.writer(f)
-            f.writerow(headers)
-            f.writerows(rows)
-    else:
-        with open(filepath, 'a+', newline='') as f:
-            f_csv = csv.writer(f)
-            f_csv.writerows(rows)
 
 
 class OssBucketExploitFromSDK:
@@ -209,7 +192,7 @@ def CheckBucket(target, location):
         if not check.CheckResult():
             pass
         else:
-            results(f"{target}.{location}.aliyuncs.com", check.CheckResult())
+            conf.save_results(f"{target}.{location}.aliyuncs.com", check.CheckResult())
         module_logger.info(">" * 80)
     except Exception as e:
         module_logger.error(f"Target: {target} Chceck Faild:( {e}")

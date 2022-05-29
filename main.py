@@ -17,6 +17,7 @@ import requests
 import argparse
 from core import aliyunOss
 from core import DnsResolution
+from core import AmazoneCloudS3Bucket
 
 NowTime = datetime.datetime.now().strftime('%Y-%m-%d')
 
@@ -86,9 +87,13 @@ if __name__ == '__main__':
     try:
         parser = argparse.ArgumentParser()
         parser.add_argument('-aliyun', dest='aliyun', help='python3 -aliyun UzJu.oss-cn-beijing.aliyuncs.com')
-        parser.add_argument('-f', '--file', dest='file', help='python3 -f/--file url.txt')
+        parser.add_argument('-aws', dest='aws', help='python3 -aws UzJu.oss-cn-beijing.aliyuncs.com')
+        parser.add_argument('-f', '--file', dest='file', nargs='+', help='python3 -f/--file url.txt')
         args = parser.parse_args()
 
+        '''
+        阿里云OSS模块
+        '''
         if args.aliyun:
             existDomain = DnsResolution.GetDomainDnsResolution(args.aliyun)
             if existDomain:
@@ -96,14 +101,42 @@ if __name__ == '__main__':
             else:
                 getTargetBucket = args.aliyun.split(".")
                 aliyunOss.CheckBucket(getTargetBucket[0], getTargetBucket[1])
+        '''
+        aws S3模块
+        '''
+        if args.aws:
+            '''
+            这里本来是这样写的
+            bucketDomain = args.aws.split(".")
+            但是在Fofa中找资产测试发现一个问题，如果这样写，举个例子
+            xxx.xxx.cdn.s3.amazonaws.com
+            这种存储桶地址就会取出来
+            ['xxx', 'xxx', 'cdn', 's3', 'amazonaws', 'com']
+            一般情况下，都能正常取下标来判断xxx就是存储桶名字，但是这里不一样，这里xxx.xxx.cdn都是存储桶的名字，这样取就会存在问题
+            
+            bucketDomain = args.aws.split(".s3")
+            这种写法能解决上述的问题，为什么？
+                我们简单分析一下存储桶的地址构造
+                xxx.xxx.xxcdn.s3.amazonaws.com
+                xxx.xxx.xxcdn.s3.us-east-1.amazonaws.com
+                无非就是存储桶名+s3+地区+云厂商的域名 或者 存储桶名+s3+云厂商域名，这里可以用来分割的字段，.s3再适合不过了
+            '''
+            bucketDomain = args.aws.split(".s3")
+            AmazoneCloudS3Bucket.CheckBucket(bucketDomain[0], args.aws)
         if args.file:
-            with open(args.file, 'r') as f:
+            with open(args.file[1], 'r') as f:
                 for i in f.read().splitlines():
-                    existDomain = DnsResolution.GetDomainDnsResolution(i)
-                    if existDomain:
-                        aliyunOss.CheckBucket(existDomain.split(".")[0], existDomain.split(".")[1])
-                    else:
-                        getTargetBucket = i.split(".")
-                        aliyunOss.CheckBucket(getTargetBucket[0], getTargetBucket[1])
+
+                    if args.file[0] == "aliyun":
+                        existDomain = DnsResolution.GetDomainDnsResolution(i)
+                        if existDomain:
+                            aliyunOss.CheckBucket(existDomain.split(".")[0], existDomain.split(".")[1])
+                        else:
+                            getTargetBucket = i.split(".")
+                            aliyunOss.CheckBucket(getTargetBucket[0], getTargetBucket[1])
+
+                    elif args.file[0] == "aws":
+                        bucketDomain = i.split(".s3")
+                        AmazoneCloudS3Bucket.CheckBucket(bucketDomain[0], i)
     except KeyboardInterrupt:
         logger.error("KeyError Out")
