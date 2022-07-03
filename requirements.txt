@@ -1,0 +1,7 @@
+boto3==1.23.9
+colorama==0.4.4
+dnspython==2.2.1
+loguru==0.5.3
+oss2==2.15.0
+pandas==1.4.3
+prettytable==3.2.0

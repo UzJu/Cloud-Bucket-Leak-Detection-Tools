@@ -1,17 +1,6 @@
 # :rooster:0x00 前言
 
-![image-20220529132925098](images/image-20220529132925098.png)
-
-> 2022年3月7日
->
-> 我觉得文档写的还不是很清楚，等有空更新一下文档完整的使用教程
-> 2022年3月8日
->
-> 2022年5月29日
->
-> 1、更新了aws存储桶检测功能
->
-> 2、感觉更新有些慢了，这段时间比较忙，其实本地的新版本写好了，一直没有push
+![image-20220703203021188](images/image-20220703203021188.png)
 
 **使用教程**: [使用教程](使用教程.md)
 
@@ -19,35 +8,11 @@
 
 English README: [English](README.en.md)
 
-想写个存储桶的利用，先给自己画个饼
-
-+ 阿里云（Aliyun Cloud Oss）
-+ 腾讯云（Tencent Cloud COS）
-+ 华为云 （HuaWei Cloud OBS）
-+ AWS （Amazon S3 Bucket）
-+ Azure （Azure Blob）
-+ GCP （Google Cloud Bucket)
-
-工具名称我都没想好，相信大佬们看到项目名就知道...机翻王
-
-如果觉得用的还行，可以提issue给工具起个名字？:sos:
-
-:waning_crescent_moon:**画饼进度**
-
-1、阿里云存储桶利用
-
-不太会用Git，代码写的也烂，有BUG直接提Issue即可（好像我连issue可能都用不明白）
-
-> 好在二爷给我推荐的GitHub Desktop 二爷YYDS
-
-2、AWS存储桶利用
-
 # :pill:0x01 依赖
 
-+ pip3 install oss2
-+ pip3 install colorlog
-+ pip3 install argparse
-+ pip3 install boto3
+```bash
+pip3 install -r requirements.txt
+```
 
 # :gun:0x02 使用方法
 
@@ -62,15 +27,15 @@ python3 main.py -h
 
 2、用来验证合法用户
 
-![image-20220304184757595](images/UzJuMarkDownImageimage-20220304184757595.png)
+![image-20220703201835328](images/image-20220703201835328.png)
 
 ## 1、当存储桶Policy权限可获取时
 
-![image-20220304185015693](images/UzJuMarkDownImageimage-20220304185015693.png)
+![image-20220703202049560](images/image-20220703202049560.png)
 
 ## 2、当存储桶不存在时(自动创建并劫持)
 
-![image](images/156925718-9a3dc236-0ef6-4afa-8d26-a2946fe876b2.png)
+![image-20220703202339058](images/image-20220703202339058.png)
 
 ## 3、批量检测存储桶
 
@@ -84,20 +49,15 @@ server="AliyunOSS"domain="aliyuncs.com" #不推荐该语法
 ```
 
 ```bash
-python3 main.py -f aws/aliyun filepath
-
-# 例如
-python3 main.py -f aws ./url.tx\\\\\\\``````````````````````````````````````````````````````````````````````````
+ python3 main.py -faliyun url.txt
 ```
 
 随后等待即可，扫描结果会在results目录下，文件名为当天的日期
 
-![image](images/156925744-3c012b86-6449-4cf1-a790-b2c1282f76bd.png)
+![image-20220703202518187](images/image-20220703202518187.png)
 
-![image](images/156925758-36a8fcba-8bc8-4d1a-8863-d8110dbe0b71.png)
-
-只会保存有权限操作的存储桶
-![image](images/156925766-15d415d3-d573-4b54-ab0f-5c79bc1966ad.png)
+随后会将结果保存至csv
+![image-20220703202635171](images/image-20220703202635171.png)
 
 输入存储桶地址即可自动检测，功能如下
 
@@ -109,7 +69,7 @@ python3 main.py -f aws ./url.tx\\\\\\\``````````````````````````````````````````
 + 5、检测存储桶是否可上传Object
 + 6、批量检测功能
 
-## 4、域名检测功能
+## 4、域名检测功能(v0.3.0暂未支持)
 
 很多存储桶都解析了域名，新增判断域名的CNAME，然后取CNAME来进行检测
 
@@ -185,6 +145,14 @@ python3 main.py -aws xxxx
 **2022年5月29日**
 
 - 新增AWS存储桶扫描
+
+**2022年7月3日**
+
+- 重构项目
+  - aliyunoss模块
+  - aws模块
+  - main模块
+  - 扫描模块
 
 # :cop:0xffffffff 免责声明
 

@@ -3,48 +3,32 @@
 # @Author  : UzJu@菜菜狗
 # @Email   : UzJuer@163.com
 # @Software: PyCharm
-# @Time    : 2022/2/28 5:18 PM
+# @Time    : 2022/7/2 14:22
 # @File    : conf.py
 
-# from fake_useragent import UserAgent
-# UA = UserAgent(use_cache_server=False)
-
-# headers = {
-#     "UserAgent": UA.random
-# }
-import os
 import datetime
-import csv
+from colorama import init, Fore, Back, Style
 
 NowTime = datetime.datetime.now().strftime('%Y-%m-%d')
-"""
-2022年3月6日 16:55
-部分用户反馈该库存在报错的问题，故此目前删除该库
-最开始使用该库是因为想用HTTP的方式实现功能，所以使用了fake_useragent
-现在实现的方式是直接调SDK所以不需要这个Fake_useragent了
-"""
 
 # aliyun
-AliyunAccessKey_ID = ""
-AliyunAccessKey_Secret = ""
-
+aliyun_id = ""
+aliyun_key = ""
 # aws
-AWS_ACCESS_KEY = ''
-AWS_SECRET_KEY = ''
+AWS_ACCESS_KEY = ""
+AWS_SECRET_KEY = ""
 
 
-def save_results(target, info):
-    headers = ['存储桶地址', '权限']
-    filepath = f'{os.getcwd()}/results/{NowTime}.csv'
-    rows = [
-        [f"{target}", info]
-    ]
-    if not os.path.isfile(filepath):
-        with open(filepath, 'a+', newline='') as f:
-            f = csv.writer(f)
-            f.writerow(headers)
-            f.writerows(rows)
-    else:
-        with open(filepath, 'a+', newline='') as f:
-            f_csv = csv.writer(f)
-            f_csv.writerows(rows)
+version = "v.0.3.0"
+author = "UzJu"
+email = "UzJuer@163.com"
+github = "GitHub.com/UzJu"
+banner = f"""
+{Fore.CYAN}______            _        _   _____                 
+{Fore.YELLOW}| ___ \          | |      | | /  ___|                
+{Fore.GREEN}| |_/ /_   _  ___| | _____| |_\ `--.  ___ __ _ _ __  
+{Fore.GREEN}| ___ \ | | |/ __| |/ / _ \ __|`--. \/ __/ _` | '_ \ 
+{Fore.BLUE}| |_/ / |_| | (__|   <  __/ |_/\__/ / (_| (_| | | | |
+{Fore.MAGENTA}\____/ \__,_|\___|_|\_\___|\__\____/ \___\__,_|_| |_|
+         {Fore.RED} Author:{author}  Version:{version}
+"""

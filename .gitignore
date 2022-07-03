@@ -1,0 +1,8 @@
+
+*.xml
+*.iml
+*.pyc
+results/
+logs/
+.idea/
+url.txt
