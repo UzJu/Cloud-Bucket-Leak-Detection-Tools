@@ -18,8 +18,15 @@ aliyun_key = ""
 AWS_ACCESS_KEY = ""
 AWS_SECRET_KEY = ""
 
+# tencent
+tencent_cam_id = ""
+tencent_cam_key = ""
 
-version = "v.0.3.0"
+# huawei
+huawei_access_key_id = ""
+huawei_access_key_key = ""
+
+version = "v.0.4.0"
 author = "UzJu"
 email = "UzJuer@163.com"
 github = "GitHub.com/UzJu"

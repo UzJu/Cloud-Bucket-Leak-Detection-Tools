@@ -4,7 +4,7 @@
 # @Email   : UzJuer@163.com
 # @Software: PyCharm
 # @Time    : 2022/7/2 14:22
-# @File    : aliyunOss.py
+# @File    : oss.py
 import json
 import os
 from itertools import islice
