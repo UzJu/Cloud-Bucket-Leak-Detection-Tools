@@ -68,7 +68,7 @@ def Aliyun_OSS(target):
         else:
             if aliyunOss_Check_init.Aliyun_Oss_GetBucketObject_List():
                 logger.log("INFOR", f"{target}> 存储桶对象可遍历")
-                aliyun_scan_results['GetBucketObject'] = True
+                aliyun_scan_results['GetBucketObjectList'] = True
             else:
                 logger.log("ALERT", f"{target}> 存储桶对象不可遍历")
 
@@ -100,14 +100,14 @@ def Aliyun_OSS(target):
 
             aliyun_print_table_header.add_row([target,
                                                aliyun_scan_results['BucketDoesBucketExist'],
-                                               aliyun_scan_results['GetBucketObject'],
+                                               aliyun_scan_results['GetBucketObjectList'],
                                                aliyun_scan_results['PutBucketObject'],
                                                aliyun_scan_results['GetBucketAcl'],
                                                aliyun_scan_results['PutBucketAcl'],
                                                aliyun_scan_results['GetBucketPolicy']])
             aliyun_save_file(target,
                              aliyun_scan_results['BucketDoesBucketExist'],
-                             aliyun_scan_results['GetBucketObject'],
+                             aliyun_scan_results['GetBucketObjectList'],
                              aliyun_scan_results['PutBucketObject'],
                              aliyun_scan_results['GetBucketAcl'],
                              aliyun_scan_results['PutBucketAcl'],
