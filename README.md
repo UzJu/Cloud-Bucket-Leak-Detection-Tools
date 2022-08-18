@@ -4,7 +4,7 @@
 
 ![image-20220818175128235](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImage20220818175128.png)
 
-如果遇到这个问题，可以使用以下命令，如果还是无法解决，可以通过issue的方式联系我，或者发送邮件到`uzjuer@163.com`或在我的GitHub主页添加我的微信，告诉我python
+如果遇到这个问题，可以使用以下命令，如果还是无法解决，可以通过issue的方式联系我，或者发送邮件到`uzjuer@163.com`或在我的GitHub主页添加我的微信，告诉我python版本即可
 
 ```bash
 pip3 install cos-python-sdk-v5
