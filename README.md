@@ -1,5 +1,21 @@
 ![image-20220703203021188](images/image-20220703203021188.png)
 
+# 问题解决ModuleNotFoundError: No module named 'urlparse'
+
+![image-20220818175128235](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImage20220818175128.png)
+
+如果遇到这个问题，可以使用以下命令，如果还是无法解决，可以通过issue的方式联系我，或者发送邮件到`uzjuer@163.com`或在我的GitHub主页添加我的微信，告诉我python
+
+```bash
+pip3 install cos-python-sdk-v5
+```
+
+目前我已经测试可以运行的版本如下
+
+1、python3.8.9
+
+2、python3.9.13
+
 # :rooster:使用教程
 
 ```bash
