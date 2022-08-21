@@ -10,7 +10,8 @@ cd Cloud-Bucket-Leak-Detection-Tools/
 # 1、python3.8.9
 # 2、python3.9.13
 # 3、python3.7
-pip3 install huaweicloud-sdk-python
+# 4、python3.6.15
+# 5、python3.9.6
 pip3 install -r requirements.txt
 python3 main.py -h
 ```
