@@ -1,27 +1,15 @@
 ![image-20220703203021188](images/image-20220703203021188.png)
 
-# 问题解决ModuleNotFoundError: No module named 'urlparse'
-
-![image-20220818175128235](https://uzjumakdown-1256190082.cos.ap-guangzhou.myqcloud.com/UzJuMarkDownImage20220818175128.png)
-
-如果遇到这个问题，可以使用以下命令，如果还是无法解决，可以通过issue的方式联系我，或者发送邮件到`uzjuer@163.com`或在我的GitHub主页添加我的微信，告诉我python版本即可
-
-```bash
-pip3 install cos-python-sdk-v5
-```
-
-目前我已经测试可以运行的版本如下
-
-1、python3.8.9
-
-2、python3.9.13
-
 # :rooster:使用教程
 
 ```bash
 git clone https://github.com/UzJu/Cloud-Bucket-Leak-Detection-Tools.git
 cd Cloud-Bucket-Leak-Detection-Tools/
 # 安装依赖 建议使用Python3.8以上的版本 我的版本: Python 3.9.13 (main, May 24 2022, 21:28:31)
+# 已经测试版本如下
+# 1、python3.8.9
+# 2、python3.9.13
+# 3、python3.7
 pip3 install huaweicloud-sdk-python
 pip3 install -r requirements.txt
 python3 main.py -h

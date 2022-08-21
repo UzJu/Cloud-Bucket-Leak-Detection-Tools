@@ -11,6 +11,8 @@ cryptography==37.0.4
 deprecation==2.1.0
 dnspython==2.2.1
 huaweicloud-sdk-python==1.0.28
+cos-python-sdk-v5
+huaweicloud-sdk-python-obs
 idna==3.3
 iso8601==1.0.2
 jmespath==0.10.0
