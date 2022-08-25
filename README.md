@@ -102,6 +102,11 @@ python3 main.py -aws [存储桶地址]
 
 ![image-20220716143619529](images/image-20220716143619529.png)
 
+## 404星链计划
+<img src lazysrc="https://github.com/knownsec/404StarLink-Project/raw/master/logo.png" width="30%">
+
+**Cloud-Bucket-Leak-Detection-Tools** 现已加入 [404星链计划](https://github.com/knownsec/404StarLink)
+
 # 曲线图
 
 [![Stargazers over time](images/Cloud-Bucket-Leak-Detection-Tools.svg)](https://starchart.cc/UzJu/Cloud-Bucket-Leak-Detection-Tools)
