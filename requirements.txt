@@ -29,7 +29,6 @@ pycryptodome
 pyparsing==3.0.9
 python-dateutil==2.8.2
 pytz==2022.1
-qcloud-cos
 requests
 s3transfer
 six==1.16.0
