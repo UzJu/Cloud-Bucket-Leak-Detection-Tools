@@ -43,7 +43,7 @@ python3 main.py -aliyun [存储桶URL]
 ```bash
 # fofa语法
 domain="aliyuncs.com"
-server="AliyunOSS"domain="aliyuncs.com"
+domain="aliyuncs.com" && server="AliyunOSS"
 ```
 
 ```bash
