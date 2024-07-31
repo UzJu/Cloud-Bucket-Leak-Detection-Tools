@@ -36,7 +36,7 @@ Automatically hijack a bucket when it is detected as not existing
 ```bash
 # fofa syntax
 domain="aliyuncs.com"
-server="AliyunOSS" domain="aliyuncs.com"
+domain="aliyuncs.com" && server="AliyunOSS"
 ```
 
 ```bash
